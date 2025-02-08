@@ -1,5 +1,5 @@
-import { getAllHotels } from "../../database/queries";
-import HotelCard from "./HotelCard";
+import HotelCard from "@/components/hotel/HotelCard";
+import { getAllHotels } from "@/database/queries";
 
 const HotelList = async () => {
     const allHotels = await getAllHotels();

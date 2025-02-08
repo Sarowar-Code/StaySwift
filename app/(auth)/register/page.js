@@ -1,5 +1,5 @@
-import RegistrationForm from "../../../components/auth/RegistrationForm";
-import SocialLogins from "../../../components/auth/SocialLogins";
+import RegistrationForm from "@/components/auth/RegistrationForm";
+import SocialLogins from "@/components/auth/SocialLogins";
 
 const RegistrationPage = () => {
     return (

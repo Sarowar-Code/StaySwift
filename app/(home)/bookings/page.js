@@ -1,6 +1,6 @@
-import PastBooking from "../../../components/user/booking/PastBooking";
-import UpcomingBooking from "../../../components/user/booking/UpcomingBooking";
-import ProfileInfo from "../../../components/user/ProfileInfo";
+import PastBooking from "@/components/user/booking/PastBooking";
+import UpcomingBooking from "@/components/user/booking/UpcomingBooking";
+import ProfileInfo from "@/components/user/ProfileInfo";
 
 const BookingsPage = () => {
     return (

@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb";
-
 var _mongomongoClientPromise;
 
 if (!process.env.MONGODB_CONNECTION_STRING) {

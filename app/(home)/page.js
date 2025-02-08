@@ -1,4 +1,5 @@
-import Search from "../../components/search/Search";
+import Search from "@/components/search/Search";
+
 export default function Home() {
     return (
         <section className="bg-[#F6F3E9] h-screen max-h-screen relative grid place-items-center bg-[url('/hero-bg.jpg')] bg-cover bg-no-repeat bg-center">

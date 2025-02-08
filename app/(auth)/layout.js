@@ -1,5 +1,5 @@
-import Navbar from "../../components/Navbar";
-import { dbConnect } from "../../service/mongo";
+import Navbar from "@/components/Navbar";
+import { dbConnect } from "@/service/mongo";
 import "../globals.css";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <Navbar sidemenu={false} />
+                <Navbar sideMenu={false} />
                 <main>{children}</main>
             </body>
         </html>

@@ -1,7 +1,7 @@
-import { hotelModel } from "../../models/hotel-model";
-import { replaceMongoIdInArray } from "../../utils/index";
+import { hotelModel } from "@/models/hotel-model";
+import { replaceMongoIdInArray } from "@/utils";
 
 export async function getAllHotels() {
-    const hotels = await hotelModel.find();
+    const hotels = await hotelModel.find().lean();
     return replaceMongoIdInArray(hotels);
 }

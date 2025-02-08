@@ -1,5 +1,5 @@
-import LoginForm from "../../../components/auth/LoginForm";
-import SocialLogins from "../../../components/auth/SocialLogins";
+import LoginForm from "@/components/auth/LoginForm";
+import SocialLogins from "@/components/auth/SocialLogins";
 
 const LoginPage = () => {
     return (

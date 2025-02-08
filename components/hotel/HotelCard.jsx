@@ -1,5 +1,5 @@
+import HotelSummaryInfo from "@/components/hotel/HotelSummaryInfo";
 import Image from "next/image";
-import HotelSummaryInfo from "./HotelSummaryInfo";
 
 const HotelCard = () => {
     return (
