@@ -5,7 +5,6 @@ import { getHotelById } from "@/database/queries";
 
 const HotelDetails = async ({ params: { id } }) => {
     const hotelInfo = await getHotelById(id);
-    console.log(hotelInfo);
 
     return (
         <>
