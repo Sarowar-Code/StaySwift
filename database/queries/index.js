@@ -2,11 +2,13 @@ import { bookingModel } from "@/models/booking-model";
 import { hotelModel } from "@/models/hotel-model";
 import { ratingModel } from "@/models/rating-model";
 import { reviewModel } from "@/models/review-model";
+
 import {
-    isDateInbetween,
     replaceMongoIdInArray,
     replaceMongoIdInObject,
-} from "@/utils";
+} from "@/utils/data-util";
+
+import { isDateInbetween } from "@/utils/data-util";
 
 export async function getAllHotels(destination, checkin, checkout) {
     const regex = new RegExp(destination, "i");
@@ -28,7 +30,7 @@ export async function getAllHotels(destination, checkin, checkout) {
         allHotels = await Promise.all(
             allHotels.map(async (hotel) => {
                 const found = await findBooking(hotel._id, checkin, checkout);
-
+                console.log(found);
                 if (found) {
                     hotel["isBooked"] = true;
                 } else {
@@ -53,16 +55,26 @@ async function findBooking(hotelId, checkin, checkout) {
             isDateInbetween(checkout, match.checkin, match.checkout)
         );
     });
+    console.log(found);
 
     return found;
 }
 
-export async function getHotelById(hotelId) {
+export async function getHotelById(hotelId, checkin, checkout) {
     const hotel = await hotelModel.findById(hotelId).lean();
+
+    if (checkin && checkout) {
+        const found = await findBooking(hotel._id, checkin, checkout);
+        if (found) {
+            hotel["isBooked"] = true;
+        } else {
+            hotel["isBooked"] = false;
+        }
+    }
     return replaceMongoIdInObject(hotel);
 }
 
-export async function getRatingForAHotel(hotelId) {
+export async function getRatingsForAHotel(hotelId) {
     const ratings = await ratingModel.find({ hotelId: hotelId }).lean();
     return replaceMongoIdInArray(ratings);
 }

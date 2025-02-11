@@ -1,28 +1,32 @@
 "use client";
 
 import { login } from "@/app/actions";
-import { useRouter } from "next/navigation";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
     const [error, setError] = useState("");
     const router = useRouter();
 
     async function onSubmit(event) {
-        event.preventDefault();
-        try {
-            const formData = new FormData(event.currentTarget);
-            const response = await login(formData);
+      event.preventDefault();
 
-            if (!!response.error) {
-                setError(response.error.message);
-            } else {
-                router.push("/bookings");
-            }
-        } catch (error) {
-            setError(error.message);
+      try {
+        const formData = new FormData(event.currentTarget);
+        const response = await login(formData);
+        console.log(response);
+        if (!!response.error) {
+          setError(response.error);
+        } else {
+          router.push("/bookings");
         }
+
+      } catch (err) {
+        setError(err.message);
+      }
     }
+
     return (
         <>
             {error && (

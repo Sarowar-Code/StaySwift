@@ -1,29 +1,33 @@
 import { userModel } from "@/models/user-model";
 import { dbConnect } from "@/service/mongo";
 import bcrypt from "bcryptjs";
-import { NextResponse } from "next/navigation";
+import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request) => {
-    const { fname, lname, email, password } = await request.json();
+  const { fname, lname, email, password } = await request.json();
 
-    await dbConnect();
+  console.log(fname, lname, email, password);
 
-    const hashedPassword = await bcrypt.hash(password, 5);
+  await dbConnect();
 
-    const newUser = {
-        name: `${fname} ${lname}`,
-        email,
-        password: hashedPassword,
-    };
+  const hashedPassword = await bcrypt.hash(password, 5);
 
-    try {
-        await userModel.create(newUser);
-        return new NextResponse("User has been Created", {
-            status: 201,
-        });
-    } catch (error) {
-        return new NextResponse(error.message, {
-            status: 500,
-        });
-    }
+  const newUser = {
+    name: `${fname} ${lname}`,
+    email,
+    password: hashedPassword,
+  };
+
+  console.log(newUser);
+
+  try {
+    await userModel.create(newUser);
+    return new NextResponse("User has been created", {
+      status: 201,
+    });
+  } catch (err) {
+    return new NextResponse(err.message, {
+      status: 500,
+    });
+  }
 };

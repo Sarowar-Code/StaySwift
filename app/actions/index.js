@@ -1,16 +1,16 @@
-"use server";
+"use server"
 
 import { signIn } from "@/auth";
 
 export async function login(formData) {
     try {
-        const response = await signIn("credentials", {
+       const response = await signIn("credentials", {
             email: formData.get("email"),
             password: formData.get("password"),
-            redirect: false,
-        });
+            redirect: false
+        })
         return response;
-    } catch (error) {
-        throw new Error(error.message);
+    } catch(error) {
+        throw new Error(error);
     }
 }

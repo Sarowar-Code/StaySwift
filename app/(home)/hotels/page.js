@@ -1,10 +1,8 @@
-import HotelList from "@/components/hotel/HotelList";
-import Filter from "@/components/search/Filter";
 import Search from "@/components/search/Search";
+import Filter from "@/components/search/Filter";
+import HotelList from "@/components/hotel/HotelList";
 
-const HotelListPage = ({
-    searchParams: { destination, checkin, checkout },
-}) => {
+const HotelListPage = ({searchParams: {destination, checkin, checkout}}) => {
     return (
         <>
             <section className="bg-[url('/hero-bg.jpg')] bg-cover bg-no-repeat bg-center pt-[100px] pb-[60px]">
@@ -13,8 +11,7 @@ const HotelListPage = ({
                         fromList={true}
                         destination={destination}
                         checkin={checkin}
-                        checkout={checkout}
-                    />
+                        checkout={checkout} />
                 </div>
             </section>
             <section className="py-12">
@@ -23,8 +20,7 @@ const HotelListPage = ({
                     <HotelList
                         destination={destination}
                         checkin={checkin}
-                        checkout={checkout}
-                    />
+                        checkout={checkout}/>
                 </div>
             </section>
         </>

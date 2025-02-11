@@ -1,17 +1,19 @@
 import Navbar from "@/components/Navbar";
 import { dbConnect } from "@/service/mongo";
+import { Inter } from "next/font/google";
 import "../globals.css";
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "Stay Swift",
-    description: "One place hotel booking app",
+    title: "StaySwift",
+    description: "One Place Stop for Hospitability",
 };
 
 export default async function RootLayout({ children }) {
     await dbConnect();
     return (
         <html lang="en">
-            <body>
+            <body className={inter.className}>
                 <Navbar sideMenu={true} />
                 <main>{children}</main>
             </body>
