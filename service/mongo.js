@@ -1,12 +1,10 @@
 import mongoose from "mongoose";
 
-export async function dbConnect() {
+export async function dbConnect(){
     try {
-        const conn = await mongoose.connect(
-            String(process.env.MONGODB_CONNECTION_STRING)
-        );
+        const conn = await mongoose.connect(String(process.env.MONGODB_CONNECTION_STRING));
         return conn;
-    } catch (error) {
-        console.error(error);
+    } catch(err) {
+        console.error(err);
     }
 }
