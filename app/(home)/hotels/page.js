@@ -1,8 +1,19 @@
-import Search from "@/components/search/Search";
-import Filter from "@/components/search/Filter";
 import HotelList from "@/components/hotel/HotelList";
+import Search from "@/components/search/Search";
+import Filter from "@/components/search/filter/Filter";
 
-const HotelListPage = ({searchParams: {destination, checkin, checkout}}) => {
+const refinedCategory = (category) => {
+    const decodedCategory = decodeURI(category);
+
+    if (decodedCategory === "undefined") {
+        return "";
+    }
+    return decodedCategory;
+};
+
+const HotelListPage = ({
+    searchParams: { destination, checkin, checkout, category },
+}) => {
     return (
         <>
             <section className="bg-[url('/hero-bg.jpg')] bg-cover bg-no-repeat bg-center pt-[100px] pb-[60px]">
@@ -11,7 +22,8 @@ const HotelListPage = ({searchParams: {destination, checkin, checkout}}) => {
                         fromList={true}
                         destination={destination}
                         checkin={checkin}
-                        checkout={checkout} />
+                        checkout={checkout}
+                    />
                 </div>
             </section>
             <section className="py-12">
@@ -20,7 +32,9 @@ const HotelListPage = ({searchParams: {destination, checkin, checkout}}) => {
                     <HotelList
                         destination={destination}
                         checkin={checkin}
-                        checkout={checkout}/>
+                        checkout={checkout}
+                        category={refinedCategory(category)}
+                    />
                 </div>
             </section>
         </>
